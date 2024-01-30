@@ -60,17 +60,17 @@ public class UnityScript : MonoBehaviour
     // <어트리뷰트>
     // 클래스, 프로퍼티 또는 함수 위에 명시하여 특별한 동작을 나타낼 수 있는 마커
 
-    [Space(30)]
+    [Space(30)]         // 30 픽셀 간격벌리기
 
     [Header("Unity Attribute")]
-    [SerializeField]
+    [SerializeField]    // private 변수이지만 보이게 해줌
     private int privateValue;
-    [HideInInspector]
+    [HideInInspector]   // public 변수이지만 보이지 않게 해줌
     public int publicValue;
-
-    [Range(0, 10)]
+        
+    [Range(0, 10)]      // 최소, 최대 범위 설정하면서 슬라이드로 바뀐다
     public float rangeValue;
 
-    [TextArea(3, 5)]
+    [TextArea(3, 5)]    // string의 최소 최대 줄 수를 설정한다
     public string textField;
 }

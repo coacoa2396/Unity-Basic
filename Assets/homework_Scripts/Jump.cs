@@ -25,14 +25,15 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()       // 동작
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            if (isGrounded)
-            {
-                Debug.Log("점프합니다.");
-                rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
-            }
+            Debug.Log("점프합니다.");
+            rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
+            isGrounded = false;
         }
+        
     }
+
+
 }
