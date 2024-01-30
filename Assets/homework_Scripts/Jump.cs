@@ -16,11 +16,14 @@ public class Jump : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
-    void OnCollisionStay()
+    void OnCollisionExit()
+    {
+        isGrounded = false;
+    }
+    private void OnCollisionEnter()
     {
         isGrounded = true;
     }
-
 
     // Update is called once per frame
     void Update()       // µø¿€
@@ -32,7 +35,7 @@ public class Jump : MonoBehaviour
             rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
             isGrounded = false;
         }
-        
+
     }
 
 
