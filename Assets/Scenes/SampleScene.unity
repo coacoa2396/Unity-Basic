@@ -656,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488946, guid: 1cd1bdb2203012a40ab12a0d2fd7aa88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.328
       objectReference: {fileID: 0}
     - target: {fileID: 488946, guid: 1cd1bdb2203012a40ab12a0d2fd7aa88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1046,6 +1046,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 792307564}
   - {fileID: 1766135220}
@@ -1054,4 +1055,3 @@ SceneRoots:
   - {fileID: 1702310812}
   - {fileID: 1008360483}
   - {fileID: 583657355}
-  - {fileID: 963194228}
