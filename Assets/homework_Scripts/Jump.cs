@@ -27,6 +27,21 @@ public class Jump : MonoBehaviour
         yield return new WaitForSeconds(coolTime);
         isJumpable = true;
     }
+    IEnumerator AfterThreeSeconds()      // 3초 뒤에 점프를 뛰는 코루틴
+    {
+        yield return new WaitForSeconds(3);
+        rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
+    }
+    IEnumerator OneSecondThreeTimes()        // 1초 간격으로 3번 점프를 뛰는 코루틴
+    {
+        yield return new WaitForSeconds(1);
+        rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
+        yield return new WaitForSeconds(1);
+        rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
+        yield return new WaitForSeconds(1);
+        rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
+    }
+
     void Start()        // 준비
     {
         rigid = GetComponent<Rigidbody>();
@@ -38,9 +53,12 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && isJumpable)
         {
-            Debug.Log("점프합니다.");
+            /*Debug.Log("점프합니다.");
             rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
-            StartCoroutine(JumpCoolTime());
+            StartCoroutine(JumpCoolTime());*/
+
+            //StartCoroutine(AfterThreeSeconds());
+            StartCoroutine(OneSecondThreeTimes());
         }
     }
 }

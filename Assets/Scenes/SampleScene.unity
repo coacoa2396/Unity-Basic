@@ -196,7 +196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481876047}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58a6e18f6f56c4d499591a322dedf7f0, type: 3}
   m_Name: 
@@ -206,7 +206,8 @@ MonoBehaviour:
   power: 7
   jump: {x: 0, y: 0, z: 0}
   isGrounded: 1
-  coolTime: 2
+  isJumpable: 1
+  coolTime: 5
 --- !u!54 &481876049
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -288,6 +289,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 481876054}
   movespeed: 5
+--- !u!114 &481876056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481876047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d27a810cb2d04bb0c920174371b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 481876049}
+  power: 5
+  isJumpable: 1
 --- !u!1 &583657351
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +876,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 481876055}
+    - targetCorrespondingSourceObject: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 481876056}
   m_SourcePrefab: {fileID: 100100000, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
 --- !u!1001 &1702310812
 PrefabInstance:
