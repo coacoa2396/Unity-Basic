@@ -32,6 +32,4 @@ public class TankController : MonoBehaviour
         moveDir.x = input.x;
         moveDir.z = input.y;
     }
-
-
 }
