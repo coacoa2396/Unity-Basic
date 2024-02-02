@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObject : MonoBehaviour
+public class GameObject1 : MonoBehaviour
 {
     /************************************************************************
 	 * 게임오브젝트 (GameObject)
