@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class TankController : MonoBehaviour
 {
     public Transform firePoint;
-    public GameObject bulletPrefab;
-
+    public Bullet bulletPrefab;
+    private Coroutine routine;
 
     public float moveSpeed;
     public float rotateSpeed;
-
+    public float chargingPower;
     private Vector3 moveDir;
 
     private void Update()
@@ -34,7 +34,9 @@ public class TankController : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);          // 오브젝트의 복사본을 만들어주는 경우
+        Bullet bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.force = bullet.force * chargingPower;
+        chargingPower = 0;
     }
     private void OnMove(InputValue value)
     {
@@ -45,6 +47,33 @@ public class TankController : MonoBehaviour
 
     private void OnFire(InputValue value)
     {
-        Fire();
+        if (value.isPressed)
+        {
+            StartCoroutine();
+        }
+        else
+        {
+            StopCoroutine();
+            Fire();
+        }
+    }
+
+    void StartCoroutine()
+    {
+        routine = StartCoroutine(SubRoutine());
+    }
+
+    void StopCoroutine()
+    {
+        StopCoroutine(routine);
+    }
+    IEnumerator SubRoutine()
+    {
+        while (true)
+        {
+            chargingPower += 0.1f;
+            Debug.Log("차징중입니다");
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
