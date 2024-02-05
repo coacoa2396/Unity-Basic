@@ -36,7 +36,7 @@ public class UnityFunction : MonoBehaviour
         // 컴포넌트가 붙어있는 게임오브젝트는 Component에 구현한 gameObject 속성을 이용하여 접근가능
         thisGameObject = gameObject;        // 컴포넌트가 붙어있는 게임오브젝트
         thisName = gameObject.name;         // 게임오브젝트 이름
-        thisActive = gameObject.activeSelf; // 게임오브젝트의 활성화 여부 (activeInHierarchy : 게임씬에서
+        thisActive = gameObject.activeSelf; // 게임오브젝트의 활성화 여부
         thisTag = gameObject.tag;           // 게임오브젝트의 태그
         thisLayer = gameObject.layer;       // 게임오브젝트의 레이어
     }

@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject a = Instantiate(explosionPrefab, transform.position, transform.rotation);
-        a.GetComponent<ParticleSystem>().Play();
-        Destroy(a, 1.1f);
+        //a.GetComponent<ParticleSystem>().Play();      // 파티클시스템에서 자동 플레이를 안해놓는 경우 사용하는 방법
+        //Destroy(a, 1.1f);                             // 마찬가지로 자동삭제를 안해놓았을 경우 사용하는 방법
         Destroy(gameObject);
     }
     private void Start()
