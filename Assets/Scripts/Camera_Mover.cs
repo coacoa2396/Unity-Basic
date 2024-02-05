@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Camera_Mover : MonoBehaviour
 {
     public Rigidbody TargetRigid;         // Ä«¸Þ¶ó°¡ µû¶ó´Ù´Ò Å¸°Ù
 
