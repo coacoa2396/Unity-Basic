@@ -24,6 +24,7 @@ public class TankController : MonoBehaviour
 
     public AudioSource shootSound;
 
+    public Animator animator;
     private void Update()
     {
         Rotate();
@@ -51,12 +52,13 @@ public class TankController : MonoBehaviour
         transform.Rotate(Vector3.up, moveDir.x * rotateSpeed * Time.deltaTime, Space.World);
     }
 
-    private void Fire()
+    public void Fire()
     {
         Bullet bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.force = bullet.force * chargingPower;
         chargingPower = 0;
         shootSound.Play();      // 효과음의 경우 오디오소스 컴포넌트를 만들어서 플레이함수를 해준다
+        animator.SetTrigger("Fire");    // 애니메이터로 연결하기
     }
     private void OnMove(InputValue value)
     {
