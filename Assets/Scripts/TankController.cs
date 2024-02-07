@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class TankController : MonoBehaviour
     public Bullet bulletPrefab;
     private Coroutine routine;
     public Rigidbody rigid;
-    
+
     public float movepower;
     public float rotateSpeed;
     public float chargingPower;
@@ -21,6 +22,9 @@ public class TankController : MonoBehaviour
 
     public CinemachineVirtualCamera normalCamera;
     public CinemachineVirtualCamera zoomCamera;
+
+    public UnityEvent OnFiring;
+    public UnityEvent OnFired;
 
     public AudioSource shootSound;
 
@@ -32,15 +36,15 @@ public class TankController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        
+
     }
 
     private void Move()
     {
         //transform.Translate(0, 0, moveDir.z * moveSpeed * Time.deltaTime, Space.Self);
-        
+
         Vector3 forceDir = transform.forward * moveDir.z;
-        rigid.AddForce(forceDir*movepower, ForceMode.Force);
+        rigid.AddForce(forceDir * movepower, ForceMode.Force);
         if (rigid.velocity.magnitude > maxSpeed)                // 최고속도 제한방법 velocity : 속도, magnitude : 크기
         {
             rigid.velocity = rigid.velocity.normalized * maxSpeed;
@@ -54,11 +58,22 @@ public class TankController : MonoBehaviour
 
     public void Fire()
     {
+        OnFiring?.Invoke();
+
         Bullet bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.force = bullet.force * chargingPower;
         chargingPower = 0;
         shootSound.Play();      // 효과음의 경우 오디오소스 컴포넌트를 만들어서 플레이함수를 해준다
         animator.SetTrigger("Fire");    // 애니메이터로 연결하기
+
+        Manager.Data.FireCount++;            // Controller : Model의 값을 여기서 바꿔준다
+        //Manager.Data.AddFireCount();       // 싱글톤패턴을 이용해서 만들어놓은 매니저 내부의 데이터매니저를 불러와서 함수를 사용한다
+
+        OnFired?.Invoke();
+        // Manager.Game.GamePause();
+        // Manager.Game.GameResume();          // 매니저 내부의 게임매니저를 불러와서 사용
+
+
     }
     private void OnMove(InputValue value)
     {
@@ -101,7 +116,7 @@ public class TankController : MonoBehaviour
 
     private void OnZoom(InputValue value)
     {
-        if(value.isPressed)
+        if (value.isPressed)
         {
             Debug.Log("Zoom on");
             zoomCamera.Priority = 50;

@@ -12,7 +12,7 @@ public class SceneChanger : MonoBehaviour
     
     public void GameStartHomework()
     {
-        SceneManager.LoadScene("240206_Homework", LoadSceneMode.Single);
+        SceneManager.LoadScene("240207_Homework", LoadSceneMode.Single);
     }
 
     public void GoTitle()

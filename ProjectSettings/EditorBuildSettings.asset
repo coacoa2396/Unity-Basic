@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/240206_homeworkTitle.unity
     guid: e0bbd53f9fb8ecc46a5a1679e558edf2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/240206_Homework.unity
     guid: 21e06c0c650b29d439f2ecce52850e03
   - enabled: 1
     path: Assets/Scenes/Manual.unity
     guid: aa64a638748ac174a8107bdcc34e1b79
+  - enabled: 1
+    path: Assets/Scenes/240207_Homework.unity
+    guid: fa096788aa6576840940243fc5b5580d
   - enabled: 0
     path: Assets/Scenes/TitleScene.unity
     guid: 4a5ad3cbc4d47bb419e823bca3b4ce0b
